@@ -1,0 +1,40 @@
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/help-path.hxx.in
+    ${CMAKE_CURRENT_BINARY_DIR}/help-path.hxx @ONLY)
+
+SET(FILES_UI
+${CMAKE_CURRENT_SOURCE_DIR}/HelpBrowser.ui
+${CMAKE_CURRENT_SOURCE_DIR}/HelpSideBar.ui)
+SET(FILES_H # to go into MOC
+${CMAKE_CURRENT_SOURCE_DIR}/helpbrowser.h
+${CMAKE_CURRENT_SOURCE_DIR}/HelpSideBar.h
+${CMAKE_CURRENT_SOURCE_DIR}/sctextbrowser.h)
+SET(FILES_HXX # NOT to go into MOC
+${CMAKE_CURRENT_SOURCE_DIR}/LuminancePaths.h
+${CMAKE_CURRENT_SOURCE_DIR}/schelptreemodel.h
+${CMAKE_CURRENT_SOURCE_DIR}/treeitem.h
+${CMAKE_CURRENT_SOURCE_DIR}/treemodel.h)
+SET(FILES_CPP
+${CMAKE_CURRENT_SOURCE_DIR}/helpbrowser.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/HelpSideBar.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/LuminancePaths.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/schelptreemodel.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/sctextbrowser.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/treeitem.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/treemodel.cpp)
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+
+QT5_WRAP_CPP(FILES_MOC ${FILES_H})
+QT5_WRAP_UI(FILES_UI_H ${FILES_UI})
+
+ADD_LIBRARY(helpbrowser STATIC ${FILES_H} ${FILES_CPP} ${FILES_MOC} ${FILES_UI_H} ${FILES_HXX})
+IF(Qt5WebEngineCore_FOUND)
+    TARGET_LINK_LIBRARIES(helpbrowser Qt5::Core Qt5::Concurrent Qt5::Gui Qt5::Widgets Qt5::Xml Qt5::WebEngineCore Qt5::WebEngineWidgets Qt5::PrintSupport)
+ELSE()
+    TARGET_LINK_LIBRARIES(helpbrowser Qt5::Core Qt5::Concurrent Qt5::Gui Qt5::Widgets Qt5::Xml Qt5::WebKit Qt5::WebKitWidgets Qt5::PrintSupport)
+ENDIF()
+
+SET(FILES_TO_TRANSLATE ${FILES_TO_TRANSLATE} ${FILES_CPP} ${FILES_H} ${FILES_UI} ${FILES_HXX} PARENT_SCOPE)
+SET(LUMINANCE_MODULES_GUI ${LUMINANCE_MODULES_GUI} helpbrowser PARENT_SCOPE)
+
+

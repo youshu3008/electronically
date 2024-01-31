@@ -1,0 +1,12 @@
+*.project
+CMakeLists.txt.user
+/.settings
+**.rule
+/.cproject
+.idea
+.swo
+.swp
+*.kdev4
+tags
+Build
+build

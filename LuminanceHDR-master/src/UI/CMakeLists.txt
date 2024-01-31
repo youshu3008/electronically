@@ -1,0 +1,63 @@
+SET(FILES_UI
+    ${CMAKE_CURRENT_SOURCE_DIR}/GammaAndLevels.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/ImageQualityDialog.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/TiffModeDialog.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/about.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/ExportToHtmlDialog.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/SupportedCamerasDialog.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/SavedParametersDialog.ui
+)
+SET(FILES_H
+    ${CMAKE_CURRENT_SOURCE_DIR}/ExtWizardPage.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/GammaAndLevels.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Gang.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/ImageQualityDialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/TiffModeDialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/PreviewFrame.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/SimplePreviewLabel.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/UMessageBox.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/FlowLayout.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/ExportToHtmlDialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/SupportedCamerasDialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/SavedParametersDialog.h
+)
+SET(FILES_CPP
+    ${CMAKE_CURRENT_SOURCE_DIR}/ExtWizardPage.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/GammaAndLevels.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Gang.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/UMessageBox.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/FlowLayout.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ImageQualityDialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TiffModeDialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/PreviewFrame.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/SimplePreviewLabel.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ExportToHtmlDialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/SupportedCamerasDialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/SavedParametersDialog.cpp
+)
+
+IF(CFITSIO_FOUND)
+    SET(FILES_UI ${FILES_UI} ${CMAKE_CURRENT_SOURCE_DIR}/FitsImporter.ui)
+    SET(FILES_H ${FILES_H} ${CMAKE_CURRENT_SOURCE_DIR}/FitsImporter.h)
+    SET(FILES_CPP ${FILES_CPP} ${CMAKE_CURRENT_SOURCE_DIR}/FitsImporter.cpp)
+ENDIF()    
+
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+
+QT5_WRAP_CPP(FILES_MOC ${FILES_H})
+QT5_WRAP_UI(FILES_UI_H ${FILES_UI})
+
+ADD_LIBRARY(ui STATIC ${FILES_H} ${FILES_CPP} ${FILES_MOC} ${FILES_UI_H})
+IF(MINGW)
+    TARGET_LINK_LIBRARIES(ui Qt5::Core Qt5::Concurrent Qt5::Gui Qt5::Widgets Qt5::WebKitWidgets Qt5::Sql)
+ELSE()
+    IF(Qt5WebEngineCore_FOUND)
+        TARGET_LINK_LIBRARIES(ui Qt5::Core Qt5::Concurrent Qt5::Gui Qt5::Widgets Qt5::WebEngineWidgets Qt5::Sql)
+    ELSE()
+        TARGET_LINK_LIBRARIES(ui Qt5::Core Qt5::Concurrent Qt5::Gui Qt5::Widgets Qt5::WebKitWidgets Qt5::Sql)
+    ENDIF()
+ENDIF()
+SET(FILES_TO_TRANSLATE ${FILES_TO_TRANSLATE} ${FILES_CPP} ${FILES_H} ${FILES_UI} PARENT_SCOPE)
+SET(LUMINANCE_MODULES_GUI ${LUMINANCE_MODULES_GUI} ui PARENT_SCOPE)

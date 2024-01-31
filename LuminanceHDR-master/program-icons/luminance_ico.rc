@@ -1,0 +1,33 @@
+#include "Common/config.h"
+
+#define PRODUCTNAME_STR "Luminance HDR"
+IDI_ICON1               ICON    DISCARDABLE     "luminance.ico"
+//See for more information MSDN: http://msdn.microsoft.com/en-us/library/aa381049(VS.85).aspx
+1 VERSIONINFO
+FILEVERSION    LUMINANCEVERSION_RES,0
+PRODUCTVERSION LUMINANCEVERSION_RES,0
+//these 2 do not seem to work with gnu's windres (v 2.17.50)
+//FILEOS         VOS_NT_WINDOWS32
+//FILETYPE       VFT_APP
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "ProductName",      PRODUCTNAME_STR
+            VALUE "FileVersion",      LUMINANCEVERSION
+            VALUE "FileDescription",  "Open Source HDR Imaging Workflow tool"
+            VALUE "CompanyName",      "http://qtpfsgui.sourceforge.net"
+            VALUE "InternalName",     PRODUCTNAME_STR
+            VALUE "ProductVersion",   LUMINANCEVERSION
+            VALUE "LegalCopyright",   "GPL v2.0"
+            VALUE "Comments",         "For the full text version of the GPL please read http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt"
+            //VALUE "OriginalFilename", "luminance-hdr.exe"
+            //VALUE "LegalTrademarks",  VER_LEGALTRADEMARKS1_STR
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END

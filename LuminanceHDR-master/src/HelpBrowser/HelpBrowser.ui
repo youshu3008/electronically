@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HelpBrowser</class>
+ <widget class="QMainWindow" name="HelpBrowser">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>630</width>
+    <height>548</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Luminance HDR Help</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../icons.qrc">
+    <normaloff>:/program-icons/luminance-hdr</normaloff>:/program-icons/luminance-hdr</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="ScTextBrowser" name="htmlPage" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>630</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="fileMenu">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="filePrint"/>
+    <addaction name="filePrintPreview"/>
+    <addaction name="fileExit"/>
+   </widget>
+   <widget class="QMenu" name="editMenu">
+    <property name="title">
+     <string>E&amp;dit</string>
+    </property>
+    <addaction name="editFind"/>
+    <addaction name="editFindPrev"/>
+    <addaction name="editFindNext"/>
+   </widget>
+   <widget class="QMenu" name="viewMenu">
+    <property name="title">
+     <string>V&amp;iew</string>
+    </property>
+    <addaction name="viewContents"/>
+    <addaction name="viewSearch"/>
+    <addaction name="viewBookmarks"/>
+   </widget>
+   <widget class="QMenu" name="bookMenu">
+    <property name="title">
+     <string>Boo&amp;kmarks</string>
+    </property>
+    <addaction name="bookAdd"/>
+    <addaction name="bookDel"/>
+    <addaction name="bookDelAll"/>
+   </widget>
+   <addaction name="fileMenu"/>
+   <addaction name="editMenu"/>
+   <addaction name="viewMenu"/>
+   <addaction name="bookMenu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>Luminance Help</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="goHome"/>
+   <addaction name="goBack"/>
+   <addaction name="goFwd"/>
+   <addaction name="separator"/>
+   <addaction name="zoomIn"/>
+   <addaction name="zoomOut"/>
+   <addaction name="zoomOriginal"/>
+   <addaction name="separator"/>
+   <addaction name="filePrint"/>
+   <addaction name="filePrintPreview"/>
+  </widget>
+  <action name="filePrint">
+   <property name="icon">
+    <iconset theme="document-print">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Print...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="fileExit">
+   <property name="icon">
+    <iconset theme="application-exit">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Exit</string>
+   </property>
+  </action>
+  <action name="editFind">
+   <property name="icon">
+    <iconset theme="edit-find">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Find...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="editFindNext">
+   <property name="text">
+    <string>Find &amp;Next...</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+  </action>
+  <action name="editFindPrev">
+   <property name="text">
+    <string>Find &amp;Previous...</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+F3</string>
+   </property>
+  </action>
+  <action name="bookAdd">
+   <property name="icon">
+    <iconset theme="list-add">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Add Bookmark</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="bookDel">
+   <property name="icon">
+    <iconset theme="list-remove">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Delete Bookmark</string>
+   </property>
+  </action>
+  <action name="bookDelAll">
+   <property name="text">
+    <string>D&amp;elete All</string>
+   </property>
+  </action>
+  <action name="goHome">
+   <property name="icon">
+    <iconset theme="go-home">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>goHome</string>
+   </property>
+  </action>
+  <action name="goBack">
+   <property name="icon">
+    <iconset theme="go-previous">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>goBack</string>
+   </property>
+  </action>
+  <action name="goFwd">
+   <property name="icon">
+    <iconset theme="go-next">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>goFwd</string>
+   </property>
+  </action>
+  <action name="zoomIn">
+   <property name="icon">
+    <iconset theme="zoom-in">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>zoomIn</string>
+   </property>
+  </action>
+  <action name="zoomOut">
+   <property name="icon">
+    <iconset theme="zoom-out">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>zoomOut</string>
+   </property>
+  </action>
+  <action name="zoomOriginal">
+   <property name="icon">
+    <iconset theme="zoom-original">
+     <normaloff>../../../../.designer/backup</normaloff>../../../../.designer/backup</iconset>
+   </property>
+   <property name="text">
+    <string>zoomOriginal</string>
+   </property>
+  </action>
+  <action name="viewContents">
+   <property name="text">
+    <string>&amp;View Contents</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="viewSearch">
+   <property name="text">
+    <string>View &amp;Search</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="viewBookmarks">
+   <property name="text">
+    <string>View &amp;Bookmarks</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="filePrintPreview">
+   <property name="icon">
+    <iconset theme="document-print-preview">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>P&amp;rint Preview</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ScTextBrowser</class>
+   <extends>QWidget</extends>
+   <header>HelpBrowser/sctextbrowser.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
